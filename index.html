@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<meta name="description" content="Find movies based on your mood instantly. Get personalised film recommendations.">
+<meta name="keywords" content="movie picker, film suggestions, movies by mood, watch films">
+<meta name="author" content="Anna Freeman">
+
+<link rel="stylesheet" href="style.css">
+
+<title>Find a Film</title>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <header>
+  <h1>Find a Film</h1>
+  <p>Select your mood and discover the perfect movie to match!</p>
+  </header>
+
+  <!-- Mood Buttons -->
+  <section class="mood-container">
+    <button class="mood-btn happy" onclick="selectMood('comedy')">Happy</button>
+    <button class="mood-btn sad" onclick="selectMood('drama')">Sad</button>
+    <button class="mood-btn excited" onclick="selectMood('action')">Excited</button>
+    <button class="mood-btn bored" onclick="selectMood('horror')">Bored</button>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    function selectMood(mood) {
+      // Save mood in browser
+      localStorage.setItem("selectedMood", mood);
+
+      // Go to movies page
+      window.location.href = "movies.html";
+    }
+  </script>
+
+</body>
+</html>

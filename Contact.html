@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Contact us about movie suggestions">
+  <meta name="keywords" content="contact, movies, feedback">
+
+<link rel="stylesheet" href="style.css">
+
+  <title>Contact</title>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1>Contact Us</h1>
+
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name">
+    <span class="error" id="nameError"></span>
+
+    <input type="email" id="email" placeholder="Your Email">
+    <span class="error" id="emailError"></span>
+
+    <input type="text" id="favMovie" placeholder="Favourite Movie">
+    <span class="error" id="movieError"></span>
+
+    <textarea id="message" placeholder="Your Message"></textarea>
+    <span class="error" id="messageError"></span>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div id="successMessage" class="success"></div>
+
+  <!-- JavaScript -->
+  <script>
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // stop page refresh
+
+      // get values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const favMovie = document.getElementById("favMovie").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      // error elements
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const movieError = document.getElementById("movieError");
+      const messageError = document.getElementById("messageError");
+
+      // reset errors
+      nameError.textContent = "";
+      emailError.textContent = "";
+      movieError.textContent = "";
+      messageError.textContent = "";
+
+      let valid = true;
+
+      // validation
+      if (name === "") {
+        nameError.textContent = "Name is required";
+        valid = false;
+      }
+
+      if (email === "" || !email.includes("@")) {
+        emailError.textContent = "Enter a valid email";
+        valid = false;
+      }
+
+      if (favMovie === "") {
+        movieError.textContent = "Please enter your favourite movie";
+        valid = false;
+      }
+
+      if (message === "") {
+        messageError.textContent = "Message cannot be empty";
+        valid = false;
+      }
+
+      // success
+      if (valid) {
+        document.getElementById("successMessage").textContent =
+          "Message sent successfully!";
+
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
